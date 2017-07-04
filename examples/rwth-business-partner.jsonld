@@ -1,0 +1,32 @@
+{
+   "@context":{
+      "@vocab":"https://w3id.org/crg#",
+      "type": "@type",
+      "id": "@id"
+   },
+   "id":"https://crg.hbz-nrw.de/resource/rwth",
+   "type":[
+      "BusinessPartner",
+      "Organization"
+   ],
+   "address":{
+      "type":"PostalAddress",
+      "addressLocality":"Aachen",
+      "postalCode":"52056"
+   },
+   "foundingDate":"1870",
+   "fte":"44546",
+   "funderType":"https://w3id.org/crg#Staatlich",
+   "location":{
+      "type":"Location",
+      "address":{
+         "type":"PostalAddress",
+         "addressLocality":"Aachen",
+         "postalCode":"52062",
+         "streetAddress":"Templergraben 55"
+      }
+   },
+   "name":"Rheinisch-Westfälische Technische Hochschule Aachen",
+   "shortName":"Aachen TH",
+   "url":"http://www.rwth-aachen.de"
+}

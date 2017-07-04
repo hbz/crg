@@ -1,0 +1,22 @@
+{
+   "@context":{
+      "@vocab":"https://w3id.org/crg#",
+      "type": "@type",
+      "id": "@id"
+   },
+   "id":"https://crg.hbz-nrw.de/resource/cp01",
+   "type":[
+      "ContactPoint",
+      "Person"
+   ],
+   "email":"bastian@ub.rwth-aachen.de",
+   "familyName":"Bastian",
+   "faxNumber":"0241/80-92273",
+   "gender": "Male",
+   "givenName":"Stefan",
+   "jobTitle":"Bastian, Dezernent Erwerbung",
+   "telephone":"0241-80-94447",
+   "worksFor":{
+      "id":"https://crg.hbz-nrw.de/resource/DE-82"
+   }
+}

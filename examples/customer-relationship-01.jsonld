@@ -1,0 +1,17 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/crg#",
+    "type": "@type",
+    "id": "@id"
+  },
+  "id": "https://crg.hbz-nrw.de/resource/cr1",
+  "type": "CustomerRelationship",
+  "businessPartner": "https://crg.hbz-nrw.de/resource/rwth",
+  "customer": "https://crg.hbz-nrw.de/resource/DE-82",
+  "product": "https://crg.hbz-nrw.de/resource/DigitaleInhalte",
+  "contactPoint": {
+    "contactPoint": "https://crg.hbz-nrw.de/resource/cp01",
+    "role": "Erwerbungsdezernent"
+  },
+  "startDate": "1919"
+}

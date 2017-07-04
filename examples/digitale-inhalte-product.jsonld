@@ -1,0 +1,11 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/crg#",
+    "type": "@type",
+    "id": "@id"
+  },
+  "id": "https://crg.hbz-nrw.de/resource/DigitaleInhalte",
+  "type": "Product",
+  "logo": "https://www.hbz-nrw.de/service/mediathek/logos/digitale-inhalte/logo-digitale-inhalte-gross",
+  "name": "Digitale Inhalte"
+}

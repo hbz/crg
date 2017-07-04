@@ -1,0 +1,88 @@
+{
+   "@context":{
+      "@vocab":"https://w3id.org/crg#",
+      "type": "@type",
+      "id": "@id"
+   },
+   "id":"https://crg.hbz-nrw.de/resource/DE-82",
+   "sameAs": "http://lobid.org/organisations/DE-82#!",
+   "linkedTo":{
+      "id":"http://lobid.org/organisations/DE-605#!",
+      "label":"Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)"
+   },
+   "crg-parentOrganization": "https://crg.hbz-nrw.de/resource/rwth",
+   "rs":"053340002002",
+   "address":{
+      "addressLocality":"Aachen",
+      "type":"PostalAddress",
+      "addressCountry":"DE",
+      "postalCode":"52056"
+   },
+   "telephone":"0049 241 80-94445 und -94457 (Fernleihe)",
+   "alternateName":[
+      "Aachen RWTH UB"
+   ],
+   "type": [ "Library", "crg-Customer", "crg-UB" ],
+   "classification":{
+      "id":"http://purl.org/lobid/libtype#n60",
+      "type":"Concept",
+      "label":{
+         "de":"Zentrale Universitätsbibliothek",
+         "en":"Central University Library"
+      }
+   },
+   "url":"http://www.ub.rwth-aachen.de/",
+   "provides":"http://opac.bib.rwth-aachen.de",
+   "name":"Universitätsbibliothek der RWTH Aachen",
+   "crg-sortName": "Aachen, BTH",
+   "location":[
+      {
+         "type":"Place",
+         "address":{
+            "postalCode":"52062",
+            "streetAddress":"Templergraben 61",
+            "addressLocality":"Aachen",
+            "addressCountry":"DE",
+            "type":"PostalAddress"
+         },
+         "openingHoursSpecification":{
+            "type":"OpeningHoursSpecification",
+            "comment":"Öffnungszeiten besonderer Bereiche s. Homepage",
+            "description":"Mo-Fr 8.00-24.00, Sa 9.00-24.00, So 11.00-24.00"
+         },
+         "geo":{
+            "lat":"50.77874",
+            "lon":"6.08039"
+         }
+      }
+   ],
+   "isil":"DE-82",
+   "fundertype":{
+      "id":"http://purl.org/lobid/fundertype#n02",
+      "type":"Concept",
+      "label":{
+         "de":"Land",
+         "en":"Federal State"
+      }
+   },
+   "collects":{
+      "type":"Collection",
+      "extent":{
+         "id":"http://purl.org/lobid/stocksize#n10",
+         "type":"Concept",
+         "label":{
+            "de":"1.000.001 und mehr",
+            "en":"1,000,001 and more"
+         }
+      },
+      "subject":[
+         "Ingenieurwissenschaften"
+      ]
+   },
+   "email":"mailto:iz@ub.rwth-aachen.de",
+   "dbsID":"AJ082",
+   "sameAs":[
+      "http://www.wikidata.org/entity/Q28733446",
+      "http://ld.zdb-services.de/resource/organisations/DE-82"
+   ]
+}
