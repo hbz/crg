@@ -5,10 +5,7 @@
       "id": "@id"
    },
    "id":"https://crg.hbz-nrw.de/resource/cp01",
-   "type":[
-      "ContactPoint",
-      "Person"
-   ],
+   "type": "ContactPoint",
    "email":"arnold@ub.rwth-aachen.de",
    "familyName":"Arnold",
    "honoricPrefix": "Dr.",

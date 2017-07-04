@@ -5,10 +5,7 @@
       "id": "@id"
    },
    "id":"https://crg.hbz-nrw.de/resource/cp01",
-   "type":[
-      "ContactPoint",
-      "Person"
-   ],
+   "type": "ContactPoint",
    "email":"bastian@ub.rwth-aachen.de",
    "familyName":"Bastian",
    "faxNumber":"0241/80-92273",

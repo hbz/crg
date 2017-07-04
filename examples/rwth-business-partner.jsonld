@@ -5,10 +5,7 @@
       "id": "@id"
    },
    "id":"https://crg.hbz-nrw.de/resource/rwth",
-   "type":[
-      "BusinessPartner",
-      "Organization"
-   ],
+   "type": "Organization",
    "address":{
       "type":"PostalAddress",
       "addressLocality":"Aachen",

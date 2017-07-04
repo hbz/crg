@@ -22,7 +22,7 @@
    "alternateName":[
       "Aachen RWTH UB"
    ],
-   "type": [ "Library", "crg-Customer", "crg-UB" ],
+   "type": [ "Organization" ],
    "classification":{
       "id":"http://purl.org/lobid/libtype#n60",
       "type":"Concept",
