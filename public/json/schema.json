@@ -313,27 +313,14 @@
           "$ref": "#/definitions/LocalizedString"
         },
         "name": {
-          "$ref": "#/definitions/LocalizedString"
+          "type": "string"
         },
-        "alternateName": {
-          "$ref": "#/definitions/LocalizedString"
+        "sortName": {
+          "type": "string"
         },
-        "displayName": {
-          "$ref": "#/definitions/LocalizedString"
-        },
-        "image": {
+        "logo": {
           "type": "string",
           "format": "uri"
-        },
-        "contactPoint": {
-          "description": "A contact person",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Person" ] } } }
-            ]
-          }
         },
         "additionalType": {
           "description": "An additional type for the Organization",
@@ -479,10 +466,10 @@
       "required": [ "name", "location" ],
       "additionalProperties": false
     },
-    "Event": {
+    "CustomerRelationship": {
       "$schema": "http://json-schema.org/draft-04/schema#",
-      "title": "Event",
-      "description": "An event that is being held for/by members of the OER community.",
+      "title": "Customer Relationship",
+      "description": "A relationship between the hbz and a customer",
       "type": "object",
       "properties": {
         "@context": {
@@ -497,115 +484,53 @@
         "type": {
           "type": "string",
           "enum": [
-            "Event"
+            "CustomerRelationship"
           ]
         },
-        "email": {
-          "type": "string",
-          "format": "email"
-        },
-        "organizer": {
-          "description": "The event's organizer ",
+          "contactPoint": {
+            "description": "A contact person",
+            "type": "array",
+            "items": {
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "type": { "enum": [ "ContactPoint" ] } } }
+              ]
+            }
+          },
+        "businessPartner": {
+          "description": "The business partner of this customer relationship",
           "type": "array",
           "items": {
             "allOf": [
               { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Person", "Organization", "Action" ] } } }
+              { "properties": { "type": { "enum": [ "Organization"] } } }
             ]
           }
         },
-        "performer": {
-          "description": "People presenting, leading a workshop etc. at the event",
+        "customer": {
+          "description": "The business partner of this customer relationship",
           "type": "array",
           "items": {
             "allOf": [
               { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Person" ] } } }
+              { "properties": { "type": { "enum": [ "Organization" ] } } }
             ]
           }
         },
         "name": {
-          "$ref": "#/definitions/LocalizedString"
+          "type": "string"
         },
-        "alternateName": {
-          "$ref": "#/definitions/LocalizedString"
+        "sortName": {
+          "type": "string"
         },
         "description": {
-          "$ref": "#/definitions/LocalizedString"
-        },
-        "image": {
-          "type": "string",
-          "format": "uri"
-        },
-        "url": {
-          "type": "string",
-          "format": "uri"
-        },
-        "sameAs": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "uri"
-          }
-        },
-        "recordedIn": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "uri"
-          }
-        },
-        "inLanguage": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "startDate": {
           "$ref": "#/definitions/iso-8601-date"
         },
         "endDate": {
           "$ref": "#/definitions/iso-8601-date"
-        },
-        "location": {
-          "$ref": "#/definitions/Place"
-        },
-        "mentionedIn": {
-          "description": "An article that mentions the event.",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Article" ] } } }
-            ]
-          }
-        },
-        "hashtag": {
-          "type": "string"
-        },
-        "keywords": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "about": {
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Concept" ] }, "inScheme": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "enum": [
-                      "https://w3id.org/class/esc/scheme"
-                    ]
-                  }
-                }
-              } } }
-            ]
-          }
         },
         "comment": {
           "description": "A comment about the Event",
@@ -617,108 +542,9 @@
             ]
           }
         },
-        "attendee": {
-          "description": "People attending the event",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Person" ] } } }
-            ]
-          }
-        },
-        "publication": {
-          "description": "A publication of the Event",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "WebPage" ] } } }
-            ]
-          }
-        }
-      },
-      "required": [
-        "name", "description", "startDate", "endDate", "location"
-      ],
-      "additionalProperties": false
+        "required": [ "name" ]
     },
-    "Grant": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
-      "title": "Grant",
-      "description": "A grant awarded to a project",
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "Grant"
-          ]
-        },
-        "sameAs": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "uri"
-          }
-        },
-        "duration": {
-          "type": "string"
-        },
-        "hasMonetaryValue": {
-          "type": "string"
-        },
-        "description": {
-          "description": "The description of the grant",
-          "$ref": "#/definitions/LocalizedString"
-        },
-        "name": {
-          "$ref": "#/definitions/LocalizedString"
-        },
-        "alternateName": {
-          "$ref": "#/definitions/LocalizedString"
-        },
-        "isAwardedBy": {
-          "description": "An organization the grant is awarded by.",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Organization" ] } } }
-            ]
-          }
-        },
-        "hasAwardDate": {
-          "$ref": "#/definitions/iso-8601-date"
-        },
-        "mentionedIn": {
-          "description": "An article that mentions the grant.",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Article" ] } } }
-            ]
-          }
-        },
-        "keywords": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "funds": {
-          "description": "The action being funded",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Action" ] } } }
-            ]
-          }
-        }
-      },
-      "additionalProperties": false
+     "additionalProperties": false
     },
     "Place": {
       "$schema": "http://json-schema.org/draft-04/schema#",
@@ -742,7 +568,7 @@
           ]
         },
         "name": {
-          "$ref": "#/definitions/LocalizedString"
+          "type": "string"
         },
         "geo": {
           "$ref": "#/definitions/GeoCoordinates"
