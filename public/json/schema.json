@@ -1,0 +1,872 @@
+{
+  "id": "#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/ContactPoint"
+    },
+    {
+      "$ref": "#/definitions/Organization"
+    },
+    {
+      "$ref": "#/definitions/Product"
+    },
+    {
+      "$ref": "#/definitions/CustomerRelationship"
+    },
+    {
+      "$ref": "#/definitions/Concept"
+    },
+    {
+      "$ref": "#/definitions/ConceptScheme"
+    }
+  ],
+  "definitions": {
+    "Link": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "A link to another entity",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The referenced entities unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "type"]
+    },
+    "ConceptScheme": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Concept Scheme",
+      "description": "A SKOS Concept Scheme",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The concept schemes's unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "ConceptScheme"
+          ]
+        },
+        "hasTopConcept": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Concept" ] } } }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Concept": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Concept",
+      "description": "A SKOS Concept",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The concepts's unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Concept"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "alternateName": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "scopeNote": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "inScheme": {
+          "$ref": "#/definitions/ConceptScheme"
+        },
+        "topConceptOf": {
+          "$ref": "#/definitions/ConceptScheme"
+        },
+        "narrower": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Concept" ] } } }
+            ]
+          }
+        },
+        "broader": {
+          "allOf": [
+            { "$ref": "#/definitions/Link" },
+            { "properties": { "type": { "enum": [ "Concept" ] } } }
+          ]
+        },
+        "notation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "image": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Product": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Produkt",
+      "description": "Ein hbz-Produkt, siehe https://www.hbz-nrw.de/produkte.",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The services's unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Service"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "sortName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string",
+          "format": "uri"
+        },
+        "allOf": [
+          {
+            "required": [
+              "name" 
+            ]
+          }
+        ],
+        "additionalProperties": false
+        }
+      },
+    "ContactPoint": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Kontaktpunkt",
+      "description": "Eine Person oder Gruppe, die als Kontaktpunkt für eine Geschäftsbeziehung agiert.",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The contact point's unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Person"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "honoricPrefix": {
+          "type": "string"
+        },
+        "sortName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "worksFor": {
+          "description": "An organization the person works for",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Organization" ] } } }
+            ]
+          }
+        },
+        "image": {
+          "type": "string",
+          "format": "uri"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "faxNumber": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "jobTitle": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sameAs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "required": [
+        "name", "location"
+      ],
+      "additionalProperties": false
+    },
+    "Organization": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Organization",
+      "description": "An institution that is customer or business partner of the hbz",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The organization's unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Organization"
+          ]
+        },
+        "location": {
+          "description": "The organization's address and geo data",
+          "$ref": "#/definitions/Place"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sameAs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the organization",
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "alternateName": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "displayName": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "image": {
+          "type": "string",
+          "format": "uri"
+        },
+        "contactPoint": {
+          "description": "A contact person",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Person" ] } } }
+            ]
+          }
+        },
+        "additionalType": {
+          "description": "An additional type for the Organization",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provides": {
+          "description": "Services provided by this Organization.",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Service" ] } } }
+            ]
+          }
+        },
+        "countryChampionFor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Country"
+          }
+        },
+        "agentIn": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Action" ] } } }
+            ]
+          }
+        },
+        "participantIn": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Action" ] } } }
+            ]
+          }
+        },
+        "funderOf": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Action" ] } } }
+            ]
+          }
+        },
+        "created": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Article" ] } } }
+            ]
+          }
+        },
+        "member": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Organization", "Service", "Action" ] } } }
+            ]
+          }
+        },
+        "affiliate": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Person" ] } } }
+            ]
+          }
+        },
+        "memberOf": {
+          "description": "An organization or service the organization is member of.",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Organization", "Service" ] } } }
+            ]
+          }
+        },
+        "mentionedIn": {
+          "description": "An article that mentions the organization.",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Article" ] } } }
+            ]
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "organizerFor": {
+          "description": "An event the organization is organizer for.",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Event" ] } } }
+            ]
+          }
+        },
+        "comment": {
+          "description": "A comment about the Organization",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Comment" ] } } }
+            ]
+          }
+        },
+        "awards": {
+          "description": "A grant the organization awards.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Grant"
+          }
+        },
+        "publication": {
+          "description": "A publication of the Organization",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "WebPage" ] } } }
+            ]
+          }
+        }
+      },
+      "required": [ "name", "location" ],
+      "additionalProperties": false
+    },
+    "Event": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Event",
+      "description": "An event that is being held for/by members of the OER community.",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The event's unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Event"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "organizer": {
+          "description": "The event's organizer ",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Person", "Organization", "Action" ] } } }
+            ]
+          }
+        },
+        "performer": {
+          "description": "People presenting, leading a workshop etc. at the event",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Person" ] } } }
+            ]
+          }
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "alternateName": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "description": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "image": {
+          "type": "string",
+          "format": "uri"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sameAs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "recordedIn": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "inLanguage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startDate": {
+          "$ref": "#/definitions/iso-8601-date"
+        },
+        "endDate": {
+          "$ref": "#/definitions/iso-8601-date"
+        },
+        "location": {
+          "$ref": "#/definitions/Place"
+        },
+        "mentionedIn": {
+          "description": "An article that mentions the event.",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Article" ] } } }
+            ]
+          }
+        },
+        "hashtag": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "about": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Concept" ] }, "inScheme": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "enum": [
+                      "https://w3id.org/class/esc/scheme"
+                    ]
+                  }
+                }
+              } } }
+            ]
+          }
+        },
+        "comment": {
+          "description": "A comment about the Event",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Comment" ] } } }
+            ]
+          }
+        },
+        "attendee": {
+          "description": "People attending the event",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Person" ] } } }
+            ]
+          }
+        },
+        "publication": {
+          "description": "A publication of the Event",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "WebPage" ] } } }
+            ]
+          }
+        }
+      },
+      "required": [
+        "name", "description", "startDate", "endDate", "location"
+      ],
+      "additionalProperties": false
+    },
+    "Grant": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Grant",
+      "description": "A grant awarded to a project",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Grant"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "duration": {
+          "type": "string"
+        },
+        "hasMonetaryValue": {
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the grant",
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "alternateName": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "isAwardedBy": {
+          "description": "An organization the grant is awarded by.",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Organization" ] } } }
+            ]
+          }
+        },
+        "hasAwardDate": {
+          "$ref": "#/definitions/iso-8601-date"
+        },
+        "mentionedIn": {
+          "description": "An article that mentions the grant.",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Article" ] } } }
+            ]
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "funds": {
+          "description": "The action being funded",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Action" ] } } }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Place": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Place",
+      "description": "An location description consisting of an address and/or geo data",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The place's unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Place"
+          ]
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedString"
+        },
+        "geo": {
+          "$ref": "#/definitions/GeoCoordinates"
+        },
+        "address": {
+          "$ref": "#/definitions/PostalAddress"
+        }
+      },
+      "required": [ "address" ],
+      "additionalProperties": false
+    },
+    "GeoCoordinates": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "GeoCoordinates",
+      "description": "A geographical coordinate",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The geo coordinates's unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "lat",
+        "lon"
+      ],
+      "additionalProperties": false
+    },
+    "PostalAddress": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "PostalAddress",
+      "description": "An universal address description",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The geo addresses' unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "PostalAddress"
+          ]
+        },
+        "streetAddress": {
+          "type": "string"
+        },
+        "postalCode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "postOfficeBoxNumber": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "addressRegion": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "$ref": "#/definitions/Country"
+        }
+      },
+      "required": [ "addressCountry" ],
+      "additionalProperties": false
+    },
+    "LocalizedString": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Localized string",
+      "description": "A language-tagged string",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "@language": {
+            "type": "string"
+          },
+          "@value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "@language",
+          "@value"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "iso-8601-date": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "ISO 8601 Date",
+      "description": "A date in ISO 8601 format.",
+      "type": "string",
+      "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$"
+    }
+  }
+}
