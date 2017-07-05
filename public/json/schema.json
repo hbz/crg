@@ -284,6 +284,46 @@
           "type": "string",
           "format": "uri"
         },
+        "provides": {
+          "type": "string",
+          "format": "uri"
+        },
+        "isil": {
+          "type": "string",
+          "format": "uri"
+        },
+        "dbsID": {
+          "type": "string",
+          "format": "uri"
+        },
+        "parentOrganization": {
+          "description": "The organization's superordinated organization",
+          "$ref": "#/definitions/Organization"
+        },
+        "rs": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/PostalAddress"
+        },
+        "classification": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Concept" ] }, "inScheme": {
+                "type": "object",
+                "properties": {
+                  "@id": {
+                    "enum": [
+                      "http://purl.org/lobid/libtype"
+                    ]
+                  }
+                }
+              } } }
+            ]
+          }
+        },
         "sameAs": {
           "type": "array",
           "items": {
@@ -309,6 +349,9 @@
           "type": "string"
         },
         "name": {
+          "type": "string"
+        },
+        "alternateName": {
           "type": "string"
         },
         "sortName": {
@@ -455,6 +498,9 @@
         },
         "address": {
           "$ref": "#/definitions/PostalAddress"
+        },
+        "openingHoursSpecification": {
+          "$ref": "#/definitions/OpeningHoursSpecification"
         }
       },
       "required": [ "address" ],
@@ -554,6 +600,38 @@
         }
       },
       "required": [ "addressCountry" ],
+      "additionalProperties": false
+    },
+    "OpeningHoursSpecification": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "OpeningHoursSpecification",
+      "description": "An opening hours specification",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri"
+        },
+        "id": {
+          "description": "The geo addresses' unique identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "OpeningHoursSpecification"
+          ]
+        },
+        "comment": {
+          "type": "string"
+        },
+
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [ "description" ],
       "additionalProperties": false
     },
     "LocalizedString": {
