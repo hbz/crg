@@ -1,11 +1,10 @@
 {
    "@context": "https://crg.hbz-nrw.de/context.json",
    "id":"https://crg.hbz-nrw.de/resource/DE-82",
-   "linkedTo":{
-      "id":"http://lobid.org/organisations/DE-605#!",
-      "label":"Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)"
+   "parentOrganization": {
+     "id": "https://crg.hbz-nrw.de/resource/rwth",
+     "type": "Organization"
    },
-   "crg-parentOrganization": "https://crg.hbz-nrw.de/resource/rwth",
    "rs":"053340002002",
    "address":{
       "addressLocality":"Aachen",
@@ -21,6 +20,7 @@
    "classification":{
       "id":"http://purl.org/lobid/libtype#n60",
       "type":"Concept",
+      "inScheme": "http://purl.org/lobid/libtype",
       "label":{
          "de":"Zentrale Universitätsbibliothek",
          "en":"Central University Library"
@@ -29,7 +29,7 @@
    "url":"http://www.ub.rwth-aachen.de/",
    "provides":"http://opac.bib.rwth-aachen.de",
    "name":"Universitätsbibliothek der RWTH Aachen",
-   "crg-sortName": "Aachen, BTH",
+   "sortName": "Aachen, BTH",
    "location":[
       {
          "type":"Place",
