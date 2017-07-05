@@ -1,6 +1,6 @@
 {
    "@context": "https://crg.hbz-nrw.de/context.json",
-   "id":"https://crg.hbz-nrw.de/resource/cp01",
+   "id": "https://crg.hbz-nrw.de/resource/cp01",
    "type": "ContactPoint",
    "email":"bastian@ub.rwth-aachen.de",
    "familyName":"Bastian",
