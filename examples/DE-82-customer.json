@@ -1,7 +1,6 @@
 {
    "@context": "https://crg.hbz-nrw.de/context.json",
    "id":"https://crg.hbz-nrw.de/resource/DE-82",
-   "sameAs": "http://lobid.org/organisations/DE-82#!",
    "linkedTo":{
       "id":"http://lobid.org/organisations/DE-605#!",
       "label":"Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)"
@@ -79,6 +78,7 @@
    "dbsID":"AJ082",
    "sameAs":[
       "http://www.wikidata.org/entity/Q28733446",
-      "http://ld.zdb-services.de/resource/organisations/DE-82"
+      "http://ld.zdb-services.de/resource/organisations/DE-82",
+      "http://lobid.org/organisations/DE-82#!"
    ]
 }

@@ -9,7 +9,8 @@
    "givenName":"Stefan",
    "jobTitle":"Bastian, Dezernent Erwerbung",
    "telephone":"0241-80-94447",
-   "worksFor":{
-      "id":"https://crg.hbz-nrw.de/resource/DE-82"
-   }
+   "worksFor": [ {
+     "id": "https://crg.hbz-nrw.de/resource/DE-82",
+     "type": "Organization"
+     } ]
 }
