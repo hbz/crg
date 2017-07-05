@@ -7,7 +7,6 @@
       "addressLocality":"Aachen",
       "postalCode":"52056"
    },
-   "foundingDate":"1870",
    "fte":"44546",
    "funderType":"https://w3id.org/crg#Staatlich",
    "location":{
@@ -16,10 +15,11 @@
          "type":"PostalAddress",
          "addressLocality":"Aachen",
          "postalCode":"52062",
-         "streetAddress":"Templergraben 55"
+         "streetAddress":"Templergraben 55",
+         "addressCountry": "DE"
       }
    },
    "name":"Rheinisch-Westfälische Technische Hochschule Aachen",
-   "shortName":"Aachen TH",
+   "sortName":"Aachen TH",
    "url":"http://www.rwth-aachen.de"
 }
