@@ -1,13 +1,22 @@
 {
-   "@context": "https://crg.hbz-nrw.de/context.json",
+  "@context": "https://crg.hbz-nrw.de/context.json",
   "id": "https://crg.hbz-nrw.de/resource/cr02",
   "type": "CustomerRelationship",
-  "businessPartner": "https://crg.hbz-nrw.de/resource/rwth",
-  "customer": "https://crg.hbz-nrw.de/resource/DE-82",
-  "product": "https://crg.hbz-nrw.de/resource/DigiBib",
+  "businessPartner": {
+    "id": "https://crg.hbz-nrw.de/resource/rwth",
+    "type": "Organization"
+  },
+  "customer": [ {
+    "id": "https://crg.hbz-nrw.de/resource/DE-82",
+    "type": "Organization"
+    } ],
+  "product": {
+    "id": "https://crg.hbz-nrw.de/resource/DigitaleInhalte",
+    "type": "Product"
+  },
   "startDate": "1919",
-  "contactPoint": {
-    "contactPoint": "https://crg.hbz-nrw.de/resource/cp02",
-    "role": "Ansprechparnter DigiBib, nicht DigiTool"
-  }
+  "contactPoint": [ {
+    "id": "https://crg.hbz-nrw.de/resource/cp02",
+    "type": "ContactPoint"
+  } ]
 }

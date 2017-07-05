@@ -2,15 +2,9 @@
    "@context": "https://crg.hbz-nrw.de/context.json",
    "id":"https://crg.hbz-nrw.de/resource/rwth",
    "type": "Organization",
-   "address":{
-      "type":"PostalAddress",
-      "addressLocality":"Aachen",
-      "postalCode":"52056"
-   },
-   "fte":"44546",
-   "funderType":"https://w3id.org/crg#Staatlich",
+   "fte": 44546,
    "location":{
-      "type":"Location",
+      "type":"Place",
       "address":{
          "type":"PostalAddress",
          "addressLocality":"Aachen",
