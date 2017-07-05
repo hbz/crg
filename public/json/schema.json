@@ -273,6 +273,9 @@
             "Organization"
           ]
         },
+        "fte": {
+          "type": "integer"
+        },
         "location": {
           "description": "The organization's address and geo data",
           "$ref": "#/definitions/Place"
@@ -387,10 +390,17 @@
             ]
           }
         },
-        "name": {
-          "type": "string"
+        "product": {
+          "description": "The product of this customer relationship",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "type": { "enum": [ "Product" ] } } }
+            ]
+          }
         },
-        "sortName": {
+        "name": {
           "type": "string"
         },
         "description": {
@@ -413,7 +423,7 @@
           }
         }
       },
-     "required": [ "name" ],
+     "required": [ "customer", "product", "businessPartner" ],
      "additionalProperties": false
     },
     "Place": {
