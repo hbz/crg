@@ -1,12 +1,12 @@
 {
    "@context": "https://crg.hbz-nrw.de/context.json",
-   "id":"https://crg.hbz-nrw.de/resource/rwth",
-   "type": "Organization",
+   "@id":"urn:uuid:74a12fe6-81af-11e7-8334-8b7f6cff2252",
+   "@type": "Organization",
    "fte": 44546,
-   "location":{
-      "type":"Place",
+   "location": {
+      "@type":"Place",
       "address":{
-         "type":"PostalAddress",
+         "@type":"PostalAddress",
          "addressLocality":"Aachen",
          "postalCode":"52062",
          "streetAddress":"Templergraben 55",

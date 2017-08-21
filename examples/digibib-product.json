@@ -1,7 +1,7 @@
 {
   "@context": "https://crg.hbz-nrw.de/context.json",
-  "id": "https://crg.hbz-nrw.de/resource/DigiBib",
-  "type": "Product",
+  "@id": "urn:uuid:6937062a-81ab-11e7-8a88-9faa99a64490",
+  "@type": "Product",
   "logo": "https://www.hbz-nrw.de/service/mediathek/logos/digibib/digibib-gross",
   "name": "DigiBib"
 }
