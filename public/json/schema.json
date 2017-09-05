@@ -12,6 +12,9 @@
       "$ref": "#/definitions/Product"
     },
     {
+      "$ref": "#/definitions/Offer"
+    },
+    {
       "$ref": "#/definitions/CustomerRelationship"
     },
     {
@@ -196,11 +199,78 @@
         "logo": {
           "type": "string",
           "format": "uri"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "includesOffer": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Offer" ] } } }
+            ]
+          }
         }
       },
         "required": [ "name" ],
         "additionalProperties": false
       },
+      "Offer": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "Offer",
+        "description": "An offer of a service",
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string",
+            "format": "uri",
+            "_display": {
+              "className": "hidden"
+            }
+          },
+          "@id": {
+            "description": "The offer's unique identifier",
+            "type": "string",
+            "format": "uri",
+            "_display": {
+              "className": "hidden"
+            }
+          },
+          "@type": {
+            "type": "string",
+            "enum": [
+              "Offer"
+            ],
+            "_display": {
+              "className": "hidden"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "alternateName": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "_display": {
+              "rows": 5
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "comment": {
+            "description": "A comment about the organisation",
+            "type": "string"
+          }
+        },
+          "required": [ "name" ],
+          "additionalProperties": false
+        },
     "ContactPoint": {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "title": "Contact Point",
