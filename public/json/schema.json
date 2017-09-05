@@ -291,7 +291,7 @@
         }
       },
       "required": [
-        "gender"
+        "name"
       ],
       "additionalProperties": false
     },
@@ -411,22 +411,9 @@
           "type": "string",
           "format": "uri"
         },
-        "additionalType": {
-          "description": "An additional type for the Organization",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "comment": {
-          "description": "A comment about the Organization",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "@type": { "enum": [ "Comment" ] } } }
-            ]
-          }
+          "description": "A comment about the organisation",
+          "type": "string"
         }
       },
       "required": [ "name" ],
@@ -494,13 +481,11 @@
         },
         "product": {
           "description": "The product of this customer relationship",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "@type": { "enum": [ "Product" ] } } }
-            ]
-          }
+          "type": "object",
+          "allOf": [
+            { "$ref": "#/definitions/Link" },
+            { "properties": { "@type": { "enum": [ "Product" ] } } }
+          ]
         },
         "name": {
           "type": "string"
@@ -521,13 +506,7 @@
         },
         "comment": {
           "description": "A comment about the customer relationship",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "@type": { "enum": [ "Comment" ] } } }
-            ]
-          }
+          "type": "string"
         }
       },
      "required": [ "customer", "product", "businessPartner" ],
