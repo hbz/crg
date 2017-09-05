@@ -266,8 +266,16 @@
             "type": "string",
             "format": "uri"
           },
+          "priceSpecification": {
+            "description": "The price specification for this offer",
+            "type": "object",
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "PriceSpecification" ] } } }
+            ]
+          },
           "comment": {
-            "description": "A comment about the organisation",
+            "description": "A comment about the offer",
             "type": "string"
           }
         },
@@ -314,6 +322,14 @@
             "endDate": {
               "description": "The end date of this service delivery",
               "$ref": "#/definitions/iso-8601-date"
+            },
+            "priceSpecification": {
+              "description": "The price specification for this offer",
+              "type": "object",
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "@type": { "enum": [ "PriceSpecification" ] } } }
+              ]
             },
             "comment": {
               "description": "A comment about the organisation",
@@ -633,6 +649,58 @@
       },
      "required": [ "customer", "product", "businessPartner" ],
      "additionalProperties": false
+    },
+    "PriceSpecification": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Price Specification",
+      "description": "An price specification for an offer or service",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
+        },
+        "@id": {
+          "description": "The price specification's unique identifier",
+          "type": "string",
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
+        },
+        "@type": {
+          "type": "string",
+          "enum": [
+            "PriceSpecification"
+          ],
+          "_display": {
+            "className": "hidden"
+          }
+        },
+        "price": {
+          "type": "string"
+        },
+        "priceCurrency": {
+          "type": "string",
+          "enum": [
+            "CAD",
+            "EUR",
+            "GBP",
+            "USD"
+          ]
+        },
+        "comment": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+          }
+      },
+      "required": [ "priceCurrency" ],
+      "additionalProperties": false
     },
     "Place": {
       "$schema": "http://json-schema.org/draft-04/schema#",
