@@ -463,7 +463,7 @@
           }
         },
         "contactPoint": {
-          "description": "A contact point",
+          "description": "The customer's contact point for this customer relationship",
           "type": "array",
           "items": {
             "allOf": [
@@ -512,13 +512,15 @@
           }
         },
         "startDate": {
+          "description": "The start date of this customer relationship",
           "$ref": "#/definitions/iso-8601-date"
         },
         "endDate": {
+          "description": "The end date of this customer relationship",
           "$ref": "#/definitions/iso-8601-date"
         },
         "comment": {
-          "description": "A comment about the Event",
+          "description": "A comment about the customer relationship",
           "type": "array",
           "items": {
             "allOf": [

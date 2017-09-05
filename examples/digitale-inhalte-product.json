@@ -3,5 +3,6 @@
   "@id": "urn:uuid:b4d0d566-81a6-11e7-882a-e36c7a3c22bd",
   "@type": "Product",
   "logo": "https://www.hbz-nrw.de/service/mediathek/logos/digitale-inhalte/logo-digitale-inhalte-gross",
-  "name": "Digitale Inhalte"
+  "name": "Digitale Inhalte",
+  "hasOffer": "urn:uuid:e365132c-920b-11e7-a212-575f31a3482e"
 }
