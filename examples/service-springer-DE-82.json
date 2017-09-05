@@ -1,0 +1,8 @@
+{
+  "@context": "https://crg.hbz-nrw.de/context.json",
+  "@id": "urn:uuid:e93e3d5e-920c-11e7-9b26-7f184fe780c2",
+  "@type": "Service",
+  "name": "Springer E-Books für DE-82",
+  "startDate": "2016-01-01",
+  "endDate": "2017-12-31"
+} 
