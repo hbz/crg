@@ -15,6 +15,9 @@
       "$ref": "#/definitions/Offer"
     },
     {
+      "$ref": "#/definitions/Service"
+    },
+    {
       "$ref": "#/definitions/CustomerRelationship"
     },
     {
@@ -271,6 +274,55 @@
           "required": [ "name" ],
           "additionalProperties": false
         },
+        "Service": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "Offer",
+          "description": "A concrete service that is being delivered",
+          "type": "object",
+          "properties": {
+            "@context": {
+              "type": "string",
+              "format": "uri",
+              "_display": {
+                "className": "hidden"
+              }
+            },
+            "@id": {
+              "description": "The offer's unique identifier",
+              "type": "string",
+              "format": "uri",
+              "_display": {
+                "className": "hidden"
+              }
+            },
+            "@type": {
+              "type": "string",
+              "enum": [
+                "Service"
+              ],
+              "_display": {
+                "className": "hidden"
+              }
+            },
+            "name": {
+              "type": "string"
+            },
+            "startDate": {
+              "description": "The start date of this service delivery",
+              "$ref": "#/definitions/iso-8601-date"
+            },
+            "endDate": {
+              "description": "The end date of this service delivery",
+              "$ref": "#/definitions/iso-8601-date"
+            },
+            "comment": {
+              "description": "A comment about the organisation",
+              "type": "string"
+            }
+          },
+            "required": [ "name" ],
+            "additionalProperties": false
+          },
     "ContactPoint": {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "title": "Contact Point",
