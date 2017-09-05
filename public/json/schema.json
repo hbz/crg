@@ -274,6 +274,14 @@
               { "properties": { "@type": { "enum": [ "PriceSpecification" ] } } }
             ]
           },
+          "taxIndicator": {
+            "type": "string",
+            "enum": [
+              "nicht steuerbar",
+              "steuerbar/steuerpflichtig",
+              "steuerbar/steuerbefreit"
+            ]
+          },
           "comment": {
             "description": "A comment about the offer",
             "type": "string"
