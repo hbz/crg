@@ -4,5 +4,5 @@
   "@type": "Product",
   "logo": "https://www.hbz-nrw.de/service/mediathek/logos/digitale-inhalte/logo-digitale-inhalte-gross",
   "name": "Digitale Inhalte",
-  "hasOffer": "urn:uuid:e365132c-920b-11e7-a212-575f31a3482e"
+  "includesOffer": "urn:uuid:e365132c-920b-11e7-a212-575f31a3482e"
 }
