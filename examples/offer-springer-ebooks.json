@@ -1,0 +1,9 @@
+{
+  "@context": "https://crg.hbz-nrw.de/context.json",
+  "@id": "urn:uuid:e365132c-920b-11e7-a212-575f31a3482e",
+  "@type": "Offer",
+  "name": "Springer E-Books",
+  "alternateName": "Springer/K",
+  "url": "http://www.springer.com/e-content/ebooks?SGWID=1-40791-0-0-0",
+  "comment": "Springer/Kluwer ist der Anteil von Woulters Kluwer Academic Publishers am Gesamtzeitschriften-Angebot Springer. Das Gesamtzeitschriften-Angebot ist verlegerisch zusammengeführt; in 2005 erfolgt aber noch eine getrennte Abrechnung des Kluwer-Anteils."
+}
