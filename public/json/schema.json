@@ -282,6 +282,16 @@
               "steuerbar/steuerbefreit"
             ]
           },
+          "yearOffered": {
+            "description": "The year of the offer",
+            "type": "string"
+          },
+          "hasPredecessor": {
+            "description": "A corresponding preceding offer (usually from the year before)",
+            "type": "string"
+          }
+        },
+        },
           "comment": {
             "description": "A comment about the offer",
             "type": "string"
@@ -292,7 +302,7 @@
         },
         "Service": {
           "$schema": "http://json-schema.org/draft-04/schema#",
-          "title": "Offer",
+          "title": "Service",
           "description": "A concrete service that is being delivered",
           "type": "object",
           "properties": {
@@ -323,6 +333,14 @@
             "name": {
               "type": "string"
             },
+            "providedIn": {
+              "description": "The customer relationship this service is provided in",
+              "type": "object",
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
+              ]
+            },
             "startDate": {
               "description": "The start date of this service delivery",
               "$ref": "#/definitions/iso-8601-date"
@@ -340,11 +358,19 @@
               ]
             },
             "comment": {
-              "description": "A comment about the organisation",
+              "description": "A comment about the service",
               "type": "string"
+            },
+            "invoiceComment": {
+              "description": "A comment about the service to be added to the invoice item",
+              "type": "string"
+            },
+            "invoiceStatus": {
+              "description": "Information on whether an invoice has been sent to the customer",
+              "type": "boolean"
             }
           },
-            "required": [ "name" ],
+            "required": [ "name", "providedIn" ],
             "additionalProperties": false
           },
     "ContactPoint": {
