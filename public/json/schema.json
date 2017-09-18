@@ -207,7 +207,7 @@
           "type": "string",
           "format": "uri"
         },
-        "includesOffer": {
+        "subOffer": {
           "type": "array",
           "items": {
             "allOf": [
@@ -337,6 +337,14 @@
               "allOf": [
                 { "$ref": "#/definitions/Link" },
                 { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
+              ]
+            },
+            "implementsOffer": {
+              "description": "The offer that this service implements.",
+              "type": "object",
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "@type": { "enum": [ "Offer" ] } } }
               ]
             },
             "startDate": {
