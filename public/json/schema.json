@@ -419,7 +419,8 @@
             "rows": 5
           }
         },
-        "worksFor": {
+        "affiliation": {
+          "description": "The organization which the contact point is affiliated with",
           "type": "array",
           "items": {
             "allOf": [
@@ -458,6 +459,10 @@
             "type": "string",
             "format": "uri"
           }
+        },
+        "comment": {
+          "description": "A comment about the contact point",
+          "type": "string"
         }
       },
       "required": [
