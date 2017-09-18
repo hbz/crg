@@ -289,9 +289,7 @@
           "hasPredecessor": {
             "description": "A corresponding preceding offer (usually from the year before)",
             "type": "string"
-          }
-        },
-        },
+          },
           "comment": {
             "description": "A comment about the offer",
             "type": "string"
