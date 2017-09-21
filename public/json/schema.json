@@ -204,8 +204,7 @@
           "format": "uri"
         },
         "url": {
-          "type": "string",
-          "format": "uri"
+          "type": "string"
         },
         "subOffer": {
           "type": "array",
@@ -263,8 +262,7 @@
             }
           },
           "url": {
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "priceSpecification": {
             "description": "The price specification for this offer",
@@ -442,8 +440,7 @@
           "format": "uri"
         },
         "email": {
-          "type": "string",
-          "format": "email"
+          "type": "string"
         },
         "telephone": {
           "type": "string"
@@ -458,8 +455,7 @@
           "type": "string"
         },
         "url": {
-          "type": "string",
-          "format": "uri"
+          "type": "string"
         },
         "sameAs": {
           "type": "array",
@@ -516,8 +512,7 @@
           "$ref": "#/definitions/Place"
         },
         "url": {
-          "type": "string",
-          "format": "uri"
+          "type": "string"
         },
         "provides": {
           "type": "string",
@@ -568,8 +563,7 @@
           }
         },
         "email": {
-          "type": "string",
-          "format": "email"
+          "type": "string"
         },
         "telephone": {
           "type": "string"
@@ -680,19 +674,17 @@
           }
         },
         "startDate": {
-          "description": "The start date of this customer relationship",
-          "$ref": "#/definitions/iso-8601-date"
+          "type": "string"
         },
         "endDate": {
-          "description": "The end date of this customer relationship",
-          "$ref": "#/definitions/iso-8601-date"
+          "type": "string"
         },
         "comment": {
           "description": "A comment about the customer relationship",
           "type": "string"
         }
       },
-     "required": [ "customer", "product", "businessPartner" ],
+     "required": [ "customer", "product" ],
      "additionalProperties": false
     },
     "PriceSpecification": {
