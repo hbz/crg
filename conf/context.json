@@ -1,5 +1,27 @@
 {
+  "@context": {
     "@vocab": "https://w3id.org/crg#",
-    "type": "@type",
-    "id": "@id"
+    "worksFor": {
+      "@container": "@set"
+    },
+    "contactPoint": {
+      "@container": "@set"
+    },
+    "customer": {
+      "@container": "@set"
+    },
+    "businessPartner": {
+      "@container": "@set"
+    },
+    "sameAs": {
+      "@container": "@set"
+    },
+    "additionalType": {
+      "@container": "@set"
+    },
+    "product": {
+      "@container": "@set"
+    }
+
+  }
 }

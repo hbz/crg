@@ -1,5 +1,5 @@
 {
-  "id": "#",
+  "@id": "#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "oneOf": [
     {
@@ -10,6 +10,12 @@
     },
     {
       "$ref": "#/definitions/Product"
+    },
+    {
+      "$ref": "#/definitions/Offer"
+    },
+    {
+      "$ref": "#/definitions/Service"
     },
     {
       "$ref": "#/definitions/CustomerRelationship"
@@ -26,17 +32,18 @@
       "$schema": "http://json-schema.org/draft-04/schema#",
       "title": "A link to another entity",
       "type": "object",
+      "remote": true,
       "properties": {
-        "id": {
+        "@id": {
           "description": "The referenced entities unique identifier",
           "type": "string",
           "format": "uri"
         },
-        "type": {
+        "@type": {
           "type": "string"
         }
       },
-      "required": ["id", "type"]
+      "required": ["@id", "@type"]
     },
     "ConceptScheme": {
       "$schema": "http://json-schema.org/draft-04/schema#",
@@ -46,25 +53,34 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The concept schemes's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "ConceptScheme"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
         "hasTopConcept": {
           "type": "array",
           "items": {
             "allOf": [
               { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Concept" ] } } }
+              { "properties": { "@type": { "enum": [ "Concept" ] } } }
             ]
           }
         }
@@ -79,18 +95,27 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The concepts's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "Concept"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
         "name": {
           "$ref": "#/definitions/LocalizedString"
@@ -112,14 +137,14 @@
           "items": {
             "allOf": [
               { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Concept" ] } } }
+              { "properties": { "@type": { "enum": [ "Concept" ] } } }
             ]
           }
         },
         "broader": {
           "allOf": [
             { "$ref": "#/definitions/Link" },
-            { "properties": { "type": { "enum": [ "Concept" ] } } }
+            { "properties": { "@type": { "enum": [ "Concept" ] } } }
           ]
         },
         "notation": {
@@ -143,33 +168,217 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The product's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "Product"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
         "name": {
           "type": "string"
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "_display": {
+            "rows": 5
+          }
         },
         "logo": {
           "type": "string",
           "format": "uri"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "subOffer": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Offer" ] } } }
+            ]
+          }
         }
       },
         "required": [ "name" ],
         "additionalProperties": false
       },
+      "Offer": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "Offer",
+        "description": "An offer of a service",
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string",
+            "format": "uri",
+            "_display": {
+              "className": "hidden"
+            }
+          },
+          "@id": {
+            "description": "The offer's unique identifier",
+            "type": "string",
+            "format": "uri",
+            "_display": {
+              "className": "hidden"
+            }
+          },
+          "@type": {
+            "type": "string",
+            "enum": [
+              "Offer"
+            ],
+            "_display": {
+              "className": "hidden"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "alternateName": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "_display": {
+              "rows": 5
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "priceSpecification": {
+            "description": "The price specification for this offer",
+            "type": "object",
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "PriceSpecification" ] } } }
+            ]
+          },
+          "taxIndicator": {
+            "type": "string",
+            "enum": [
+              "nicht steuerbar",
+              "steuerbar/steuerpflichtig",
+              "steuerbar/steuerbefreit"
+            ]
+          },
+          "yearOffered": {
+            "description": "The year of the offer",
+            "type": "string"
+          },
+          "hasPredecessor": {
+            "description": "A corresponding preceding offer (usually from the year before)",
+            "type": "string"
+          },
+          "comment": {
+            "description": "A comment about the offer",
+            "type": "string"
+          }
+        },
+          "required": [ "name" ],
+          "additionalProperties": false
+        },
+        "Service": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "Service",
+          "description": "A concrete service that is being delivered",
+          "type": "object",
+          "properties": {
+            "@context": {
+              "type": "string",
+              "format": "uri",
+              "_display": {
+                "className": "hidden"
+              }
+            },
+            "@id": {
+              "description": "The offer's unique identifier",
+              "type": "string",
+              "format": "uri",
+              "_display": {
+                "className": "hidden"
+              }
+            },
+            "@type": {
+              "type": "string",
+              "enum": [
+                "Service"
+              ],
+              "_display": {
+                "className": "hidden"
+              }
+            },
+            "name": {
+              "type": "string"
+            },
+            "providedIn": {
+              "description": "The customer relationship this service is provided in",
+              "type": "object",
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
+              ]
+            },
+            "implementsOffer": {
+              "description": "The offer that this service implements.",
+              "type": "object",
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "@type": { "enum": [ "Offer" ] } } }
+              ]
+            },
+            "startDate": {
+              "description": "The start date of this service delivery",
+              "$ref": "#/definitions/iso-8601-date"
+            },
+            "endDate": {
+              "description": "The end date of this service delivery",
+              "$ref": "#/definitions/iso-8601-date"
+            },
+            "priceSpecification": {
+              "description": "The price specification for this offer",
+              "type": "object",
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "@type": { "enum": [ "PriceSpecification" ] } } }
+              ]
+            },
+            "comment": {
+              "description": "A comment about the service",
+              "type": "string"
+            },
+            "invoiceComment": {
+              "description": "A comment about the service to be added to the invoice item",
+              "type": "string"
+            },
+            "invoiceStatus": {
+              "description": "Information on whether an invoice has been sent to the customer",
+              "type": "boolean"
+            }
+          },
+            "required": [ "name", "providedIn" ],
+            "additionalProperties": false
+          },
     "ContactPoint": {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "title": "Contact Point",
@@ -178,18 +387,27 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The contact point's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "ContactPoint"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
         "name": {
           "type": "string"
@@ -204,14 +422,18 @@
           "type": "string"
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "_display": {
+            "rows": 5
+          }
         },
-        "worksFor": {
+        "affiliation": {
+          "description": "The organization which the contact point is affiliated with",
           "type": "array",
           "items": {
             "allOf": [
               { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Organization" ] } } }
+              { "properties": { "@type": { "enum": [ "Organization" ] } } }
             ]
           }
         },
@@ -245,10 +467,14 @@
             "type": "string",
             "format": "uri"
           }
+        },
+        "comment": {
+          "description": "A comment about the contact point",
+          "type": "string"
         }
       },
       "required": [
-        "gender"
+        "name"
       ],
       "additionalProperties": false
     },
@@ -260,18 +486,27 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The organization's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "Organization"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
         "fte": {
           "type": "integer"
@@ -289,16 +524,17 @@
           "format": "uri"
         },
         "isil": {
-          "type": "string",
-          "format": "uri"
+          "type": "string"
         },
         "dbsID": {
-          "type": "string",
-          "format": "uri"
+          "type": "string"
         },
         "parentOrganization": {
           "description": "The organization's superordinated organization",
-          "$ref": "#/definitions/Organization"
+          "allOf": [
+            { "$ref": "#/definitions/Link" },
+            { "properties": { "@type": { "enum": [ "Organization" ] } } }
+          ]
         },
         "rs": {
           "type": "string"
@@ -327,13 +563,7 @@
         "sameAs": {
           "type": "array",
           "items": {
-                    "allOf": [
-          {
-            "required": [
-              "name" 
-            ]
-          }
-        ],"type": "string",
+            "type": "string",
             "format": "uri"
           }
         },
@@ -346,7 +576,10 @@
         },
         "description": {
           "description": "The description of the organization",
-          "type": "string"
+          "type": "string",
+          "_display": {
+            "rows": 5
+          }
         },
         "name": {
           "type": "string"
@@ -361,22 +594,9 @@
           "type": "string",
           "format": "uri"
         },
-        "additionalType": {
-          "description": "An additional type for the Organization",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "comment": {
-          "description": "A comment about the Organization",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Comment" ] } } }
-            ]
-          }
+          "description": "A comment about the organisation",
+          "type": "string"
         }
       },
       "required": [ "name" ],
@@ -390,36 +610,45 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The customer relationship's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "CustomerRelationship"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
-          "contactPoint": {
-            "description": "A contact point",
-            "type": "array",
-            "items": {
-              "allOf": [
-                { "$ref": "#/definitions/Link" },
-                { "properties": { "type": { "enum": [ "ContactPoint" ] } } }
-              ]
-            }
-          },
-        "businessPartner": {
-          "description": "The business partner of this customer relationship",
-          "type": "object",
+        "contactPoint": {
+          "description": "The customer's contact point for this customer relationship",
+          "type": "array",
           "items": {
             "allOf": [
               { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Organization"] } } }
+              { "properties": { "@type": { "enum": [ "ContactPoint" ] } } }
+            ]
+          }
+        },
+        "businessPartner": {
+          "description": "The business partner of this customer relationship",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Organization"] } } }
             ]
           }
         },
@@ -429,45 +658,94 @@
           "items": {
             "allOf": [
               { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Organization" ] } } }
+              { "properties": { "@type": { "enum": [ "Organization" ] } } }
             ]
           }
         },
         "product": {
           "description": "The product of this customer relationship",
           "type": "object",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Product" ] } } }
-            ]
-          }
+          "allOf": [
+            { "$ref": "#/definitions/Link" },
+            { "properties": { "@type": { "enum": [ "Product" ] } } }
+          ]
         },
         "name": {
           "type": "string"
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "_display": {
+            "rows": 5
+          }
         },
         "startDate": {
+          "description": "The start date of this customer relationship",
           "$ref": "#/definitions/iso-8601-date"
         },
         "endDate": {
+          "description": "The end date of this customer relationship",
           "$ref": "#/definitions/iso-8601-date"
         },
         "comment": {
-          "description": "A comment about the Event",
-          "type": "array",
-          "items": {
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "type": { "enum": [ "Comment" ] } } }
-            ]
-          }
+          "description": "A comment about the customer relationship",
+          "type": "string"
         }
       },
      "required": [ "customer", "product", "businessPartner" ],
      "additionalProperties": false
+    },
+    "PriceSpecification": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Price Specification",
+      "description": "An price specification for an offer or service",
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
+        },
+        "@id": {
+          "description": "The price specification's unique identifier",
+          "type": "string",
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
+        },
+        "@type": {
+          "type": "string",
+          "enum": [
+            "PriceSpecification"
+          ],
+          "_display": {
+            "className": "hidden"
+          }
+        },
+        "price": {
+          "type": "string"
+        },
+        "priceCurrency": {
+          "type": "string",
+          "enum": [
+            "CAD",
+            "EUR",
+            "GBP",
+            "USD"
+          ]
+        },
+        "comment": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+          }
+      },
+      "required": [ "priceCurrency" ],
+      "additionalProperties": false
     },
     "Place": {
       "$schema": "http://json-schema.org/draft-04/schema#",
@@ -477,18 +755,27 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The place's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "Place"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
         "name": {
           "type": "string"
@@ -525,12 +812,18 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The geo coordinates's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
         "lat": {
           "type": "number"
@@ -553,41 +846,36 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
+        "@id": {
           "description": "The geo addresses' unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "PostalAddress"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
         "streetAddress": {
           "type": "string"
         },
         "postalCode": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "number"
-            }
-          ]
+          "type": "string"
         },
         "postOfficeBoxNumber": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "number"
-            }
-          ]
+          "type": "string"
         },
         "addressLocality": {
           "type": "string"
@@ -610,25 +898,36 @@
       "properties": {
         "@context": {
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "id": {
-          "description": "The geo addresses' unique identifier",
+        "@id": {
+          "description": "The opening hours specification's unique identifier",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "_display": {
+            "className": "hidden"
+          }
         },
-        "type": {
+        "@type": {
           "type": "string",
           "enum": [
             "OpeningHoursSpecification"
-          ]
+          ],
+          "_display": {
+            "className": "hidden"
+          }
         },
         "comment": {
           "type": "string"
         },
-
         "description": {
-          "type": "string"
+          "type": "string",
+          "_display": {
+            "rows": 5
+          }
         }
       },
       "required": [ "description" ],
