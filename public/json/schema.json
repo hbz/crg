@@ -215,6 +215,16 @@
               { "properties": { "@type": { "enum": [ "Offer" ] } } }
             ]
           }
+        },
+        "customerRelationship": {
+          "description": "A customer relationship for the product",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
+            ]
+          }
         }
       },
         "required": [ "name" ],
@@ -282,13 +292,51 @@
               "steuerbar/steuerbefreit"
             ]
           },
+          "superOffer": {
+            "type": "object",
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Offer", "Product" ] } } }
+            ]
+          },
+          "subOffer": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "@type": { "enum": [ "Offer" ] } } }
+              ]
+            }
+          },
           "yearOffered": {
             "description": "The year of the offer",
             "type": "string"
           },
           "hasPredecessor": {
             "description": "A corresponding preceding offer (usually from the year before)",
-            "type": "string"
+            "type": "object",
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Offer" ] } } }
+            ]
+          },
+          "hasSuccessor": {
+            "description": "A corresponding succeeding offer (usually from the year after)",
+            "type": "object",
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Offer" ] } } }
+            ]
+          },
+          "implementingService": {
+            "description": "A service that implements the offer",
+            "type": "array",
+            "items": {
+              "allOf": [
+                { "$ref": "#/definitions/Link" },
+                { "properties": { "@type": { "enum": [ "Service" ] } } }
+              ]
+            }
           },
           "comment": {
             "description": "A comment about the offer",
@@ -437,6 +485,13 @@
             ]
           }
         },
+        "isContactPointFor": {
+          "description": "The customer relation ship it is contact point for",
+          "allOf": [
+            { "$ref": "#/definitions/Link" },
+            { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
+          ]
+        },
         "image": {
           "type": "string",
           "format": "uri"
@@ -534,6 +589,40 @@
           "allOf": [
             { "$ref": "#/definitions/Link" },
             { "properties": { "@type": { "enum": [ "Organization" ] } } }
+          ]
+        },
+        "subOrganization": {
+          "description": "A sub organization of the organization",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Organization" ] } } }
+            ]
+          }
+        },
+        "affiliate": {
+          "description": "A contact point that are affiliated with the organization",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "ContactPoint" ] } } }
+            ]
+          }
+        },
+        "isBusinessPartnerFor": {
+          "description": "The customer relation ship the organization is business partner for",
+          "allOf": [
+            { "$ref": "#/definitions/Link" },
+            { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
+          ]
+        },
+        "customerIn": {
+          "description": "The customer relation ship the organization is customer in",
+          "allOf": [
+            { "$ref": "#/definitions/Link" },
+            { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
           ]
         },
         "rs": {
@@ -669,6 +758,16 @@
             { "$ref": "#/definitions/Link" },
             { "properties": { "@type": { "enum": [ "Product" ] } } }
           ]
+        },
+        "serviceProvided": {
+          "description": "A service that is provided within the customer relationship",
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "Service" ] } } }
+            ]
+          }
         },
         "name": {
           "type": "string"
