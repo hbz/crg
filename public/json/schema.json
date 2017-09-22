@@ -276,11 +276,7 @@
           },
           "priceSpecification": {
             "description": "The price specification for this offer",
-            "type": "object",
-            "allOf": [
-              { "$ref": "#/definitions/Link" },
-              { "properties": { "@type": { "enum": [ "PriceSpecification" ] } } }
-            ]
+            "$ref": "#/definitions/PriceSpecification"
           },
           "taxIndicator": {
             "type": "string",
@@ -403,11 +399,7 @@
             },
             "priceSpecification": {
               "description": "The price specification for this offer",
-              "type": "object",
-              "allOf": [
-                { "$ref": "#/definitions/Link" },
-                { "properties": { "@type": { "enum": [ "PriceSpecification" ] } } }
-              ]
+              "$ref": "#/definitions/PriceSpecification"
             },
             "comment": {
               "description": "A comment about the service",
@@ -792,21 +784,6 @@
       "description": "An price specification for an offer or service",
       "type": "object",
       "properties": {
-        "@context": {
-          "type": "string",
-          "format": "uri",
-          "_display": {
-            "className": "hidden"
-          }
-        },
-        "@id": {
-          "description": "The price specification's unique identifier",
-          "type": "string",
-          "format": "uri",
-          "_display": {
-            "className": "hidden"
-          }
-        },
         "@type": {
           "type": "string",
           "enum": [
@@ -835,7 +812,7 @@
           "type": "string"
           }
       },
-      "required": [ "priceCurrency" ],
+      "required": [ "price", "priceCurrency" ],
       "additionalProperties": false
     },
     "Place": {
