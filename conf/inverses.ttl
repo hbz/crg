@@ -1,0 +1,13 @@
+@prefix      : <https://w3id.org/crg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+:implementsOffer owl:inverseOf :implementingService .
+:hasSuccessor owl:inverseOf :hasPredecessor .
+:subOffer owl:inverseOf :superOffer .
+:serviceProvided  owl:inverseOf :providedIn .
+:affiliation owl:inverseOf :affiliate .
+:parentOrganization owl:inverseOf :subOrganization .
+:contactPoint owl:inverseOf :isContactPointFor .
+:businessPartner owl:inverseOf :isBusinessPartnerFor .
+:customer owl:inverseOf :customerIn .
+:product owl:inverseOf :customerRelationship .

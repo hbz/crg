@@ -10,7 +10,7 @@
    "givenName":"Hubert",
    "jobTitle":"Leiter Abt. Zeitschriftenerwerbung Fachreferent für Wirtschaftswissenschaft und Recht (für ISI, LexisNexis, EconLit)",
    "telephone":"0241-8094455",
-   "worksFor": [{
+   "affiliation": [{
       "@id":"urn:uuid:f6f40b08-81af-11e7-8352-cf83ef8debba"
    } ]
 }
