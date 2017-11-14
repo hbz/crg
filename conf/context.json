@@ -7,6 +7,9 @@
     "contactPoint": {
       "@container": "@set"
     },
+    "isContactPointFor": {
+      "@container": "@set"
+    },
     "customer": {
       "@container": "@set"
     },
@@ -19,9 +22,17 @@
     "additionalType": {
       "@container": "@set"
     },
-    "product": {
+    "affiliation": {
+      "@container": "@set"
+    },
+    "implementingService": {
+      "@container": "@set"
+    },
+    "serviceProvided": {
+      "@container": "@set"
+    },
+    "subOffer": {
       "@container": "@set"
     }
-
   }
 }
