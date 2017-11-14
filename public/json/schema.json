@@ -477,10 +477,13 @@
         },
         "isContactPointFor": {
           "description": "The customer relation ship it is contact point for",
-          "allOf": [
-            { "$ref": "#/definitions/Link" },
-            { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
-          ]
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/Link" },
+              { "properties": { "@type": { "enum": [ "CustomerRelationship" ] } } }
+            ]
+          }
         },
         "image": {
           "type": "string",
