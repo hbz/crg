@@ -1,5 +1,38 @@
 {
+  "@context": {
     "@vocab": "https://w3id.org/crg#",
-    "type": "@type",
-    "id": "@id"
+    "worksFor": {
+      "@container": "@set"
+    },
+    "contactPoint": {
+      "@container": "@set"
+    },
+    "isContactPointFor": {
+      "@container": "@set"
+    },
+    "customer": {
+      "@container": "@set"
+    },
+    "businessPartner": {
+      "@container": "@set"
+    },
+    "sameAs": {
+      "@container": "@set"
+    },
+    "additionalType": {
+      "@container": "@set"
+    },
+    "affiliation": {
+      "@container": "@set"
+    },
+    "implementingService": {
+      "@container": "@set"
+    },
+    "serviceProvided": {
+      "@container": "@set"
+    },
+    "subOffer": {
+      "@container": "@set"
+    }
+  }
 }

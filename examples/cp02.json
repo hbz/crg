@@ -1,7 +1,7 @@
 {
    "@context": "https://crg.hbz-nrw.de/context.json",
-   "id":"https://crg.hbz-nrw.de/resource/cp01",
-   "type": "ContactPoint",
+   "@id":"urn:uuid:ccaf05fa-81be-11e7-b9bb-e38f7c365337",
+   "@type": "ContactPoint",
    "email":"arnold@ub.rwth-aachen.de",
    "familyName":"Arnold",
    "honoricPrefix": "Dr.",
@@ -10,8 +10,7 @@
    "givenName":"Hubert",
    "jobTitle":"Leiter Abt. Zeitschriftenerwerbung Fachreferent für Wirtschaftswissenschaft und Recht (für ISI, LexisNexis, EconLit)",
    "telephone":"0241-8094455",
-   "worksFor": [{
-      "id":"https://crg.hbz-nrw.de/resource/DE-82",
-      "type": "Organization"
+   "affiliation": [{
+      "@id":"urn:uuid:f6f40b08-81af-11e7-8352-cf83ef8debba"
    } ]
 }
